@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
+
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -12,11 +13,29 @@
   <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@300&family=Oswald:wght@200&display=swap" rel="stylesheet">
   <link href="https://use.fontawesome.com/releases/v5.6.1/css/all.css" rel="stylesheet">
 </head>
-<body>
+
+<body class="all_content">
+
   <form action="{{ route('registerPost') }}" method="POST">
-    <div class="w-100 vh-100 d-flex" style="align-items:center; justify-content:center;">
-      <div class="w-25 vh-75 border p-3">
+    <div class="w-100 d-flex" style="align-items:center; justify-content:center; margin: 20px 0 ;">
+      <div class="w-25 vh-75 border p-3" style="box-shadow: 0px 0px 10px rgb(0 0 0 / 20%); border-radius :10px;">
         <div class="register_form">
+          <!-- @if ($errors->has('mail_address')) -->
+          <div class="alert">
+            @foreach($errors->get('over_name') as $error)
+            <li>{{$error}}</li>
+            @endforeach
+            @foreach($errors->get('under_name') as $error)
+            <li>{{$error}}</li>
+            @endforeach
+            @foreach($errors->get('over_name_kana') as $error)
+            <li>{{$error}}</li>
+            @endforeach
+            @foreach($errors->get('under_name_kana') as $error)
+            <li>{{$error}}</li>
+            @endforeach
+          </div>
+          <!-- @endif -->
           <div class="d-flex mt-3" style="justify-content:space-between">
             <div class="" style="width:140px">
               <label class="d-block m-0" style="font-size:13px">姓</label>
@@ -46,6 +65,14 @@
             </div>
           </div>
           <div class="mt-3">
+            @if ($errors->has('mail_address'))
+            <div class="alert">
+
+              @foreach($errors->get('mail_address') as $error)
+              {{ $error }}<br>
+              @endforeach
+            </div>
+            @endif
             <label class="m-0 d-block" style="font-size:13px">メールアドレス</label>
             <div class="border-bottom border-primary">
               <input type="mail" class="w-100 border-0 mail_address" name="mail_address">
@@ -53,6 +80,13 @@
           </div>
         </div>
         <div class="mt-3">
+          <!-- @if ($errors->has('sex'))
+          <div class="alert">
+            @foreach($errors->get('sex') as $error)
+            <li>{{$error}}</li>
+            @endforeach
+          </div>
+          @endif -->
           <input type="radio" name="sex" class="sex" value="1">
           <label style="font-size:13px">男性</label>
           <input type="radio" name="sex" class="sex" value="2">
@@ -61,6 +95,13 @@
           <label style="font-size:13px">その他</label>
         </div>
         <div class="mt-3">
+          <!-- @if ($errors->has('old_year'))
+          <div class="alert">
+            @foreach($errors->get('old_year') as $error)
+            <li>{{$error}}</li>
+            @endforeach
+          </div>
+          @endif -->
           <label class="d-block m-0 aa" style="font-size:13px">生年月日</label>
           <select class="old_year" name="old_year">
             <option value="none">-----</option>
@@ -145,6 +186,13 @@
           <label style="font-size:13px">月</label>
         </div>
         <div class="mt-3">
+          <!-- @if ($errors->has('sex'))
+          <div class="alert">
+            @foreach($errors->get('role') as $error)
+            <li>{{$error}}</li>
+            @endforeach
+          </div>
+          @endif -->
           <label class="d-block m-0" style="font-size:13px">役職</label>
           <input type="radio" name="role" class="admin_role role" value="1">
           <label style="font-size:13px">教師(国語)</label>
@@ -165,6 +213,13 @@
           @endforeach
         </div>
         <div class="mt-3">
+          @if ($errors->has('password'))
+          <div class="alert">
+            @foreach($errors->get('password') as $error)
+            <li>{{$error}}</li>
+            @endforeach
+          </div>
+          @endif
           <label class="d-block m-0" style="font-size:13px">パスワード</label>
           <div class="border-bottom border-primary">
             <input type="password" class="border-0 w-100 password" name="password">
@@ -173,7 +228,7 @@
         <div class="mt-3">
           <label class="d-block m-0" style="font-size:13px">確認用パスワード</label>
           <div class="border-bottom border-primary">
-            <input type="password" class="border-0 w-100 password_confirmation" name="password">
+            <input type="password" class="border-0 w-100 password_confirmation" name="password_confirmation">
           </div>
         </div>
         <div class="mt-5 text-right">
@@ -190,4 +245,5 @@
   <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
   <script src="{{ asset('js/register.js') }}" rel="stylesheet"></script>
 </body>
+
 </html>
