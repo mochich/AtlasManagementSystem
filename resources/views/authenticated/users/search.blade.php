@@ -46,6 +46,7 @@
       <div>
         @if($user->role == 4)
         <span>選択科目 :</span>
+        <span>{{$user->subjects->implode('subject')}}</span>
         @endif
       </div>
     </div>

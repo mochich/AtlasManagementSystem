@@ -68,7 +68,7 @@ class User extends Authenticatable
     {
         return $this->belongsToMany('App\Models\Calendars\ReserveSettings', 'reserve_setting_users', 'user_id', 'reserve_setting_id')->withPivot('id');
     }
-
+    // サブジェクトのIDを取得する
     public function subjects()
     {
         return $this->belongsToMany('App\Models\Users\Subjects', 'subject_users', 'user_id', 'subject_id');

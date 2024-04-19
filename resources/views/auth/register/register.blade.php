@@ -80,13 +80,13 @@
           </div>
         </div>
         <div class="mt-3">
-          <!-- @if ($errors->has('sex'))
+          @if ($errors->has('sex'))
           <div class="alert">
             @foreach($errors->get('sex') as $error)
             <li>{{$error}}</li>
             @endforeach
           </div>
-          @endif -->
+          @endif
           <input type="radio" name="sex" class="sex" value="1">
           <label style="font-size:13px">男性</label>
           <input type="radio" name="sex" class="sex" value="2">
@@ -95,13 +95,13 @@
           <label style="font-size:13px">その他</label>
         </div>
         <div class="mt-3">
-          <!-- @if ($errors->has('old_year'))
+          @if ($errors->has('birth_day'))
           <div class="alert">
-            @foreach($errors->get('old_year') as $error)
+            @foreach($errors->get('birth_day') as $error)
             <li>{{$error}}</li>
             @endforeach
           </div>
-          @endif -->
+          @endif
           <label class="d-block m-0 aa" style="font-size:13px">生年月日</label>
           <select class="old_year" name="old_year">
             <option value="none">-----</option>
@@ -186,13 +186,13 @@
           <label style="font-size:13px">月</label>
         </div>
         <div class="mt-3">
-          <!-- @if ($errors->has('sex'))
+          @if ($errors->has('role'))
           <div class="alert">
             @foreach($errors->get('role') as $error)
             <li>{{$error}}</li>
             @endforeach
           </div>
-          @endif -->
+          @endif
           <label class="d-block m-0" style="font-size:13px">役職</label>
           <input type="radio" name="role" class="admin_role role" value="1">
           <label style="font-size:13px">教師(国語)</label>

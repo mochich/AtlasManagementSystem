@@ -24,12 +24,12 @@ class Post extends Model
     {
         return $this->hasMany('App\Models\Posts\PostComment');
     }
-
+    // postのサブカテゴリーのIDを取得
     public function subCategories()
     {
         // リレーションの定義
+        return $this->belongsToMany('App\Models\Categories\SubCategory', 'post_sub_categories', 'post_id', 'sub_category_id')->withPivot('sub_category_id');
     }
-
 
     // コメント数
     public function commentCounts($post_id)
