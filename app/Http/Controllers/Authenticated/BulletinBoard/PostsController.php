@@ -95,6 +95,15 @@ class PostsController extends Controller
     }
     public function mainCategoryCreate(Request $request)
     {
+        $validated = $request->validate([
+            'main_category_name' => 'required|unique:main_categories,main_category|string|max:100'
+        ]);
+
+        // "・必須項目
+        // ・100文字以内
+        // ・文字列型
+        // ・同じ名前のメインカテゴリーは登録できない"
+
         $main_category_name = $request->input('main_category_name');
         MainCategory::create(['main_category' => $main_category_name]);
         return redirect()->route('post.input');
@@ -102,7 +111,10 @@ class PostsController extends Controller
     // サブカテゴリー作成
     public function subCategoryCreate(Request $request)
     {
-
+        $validated = $request->validate([
+            'main_category' => 'required|unique:main_categories,id',
+            'sub_category_name' => 'required|unique:sub_categories,sub_category|string|max:100'
+        ]);
         $main_category_id = $request->input('main_category');
         $sub_category_name = $request->input('sub_category_name');
 
