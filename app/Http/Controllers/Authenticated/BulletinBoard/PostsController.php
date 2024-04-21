@@ -112,7 +112,7 @@ class PostsController extends Controller
     public function subCategoryCreate(Request $request)
     {
         $validated = $request->validate([
-            'main_category' => 'required|unique:main_categories,id',
+            'main_category' => 'required|exists:main_categories,id',
             'sub_category_name' => 'required|unique:sub_categories,sub_category|string|max:100'
         ]);
         $main_category_id = $request->input('main_category');
