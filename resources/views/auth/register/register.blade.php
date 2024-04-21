@@ -95,15 +95,15 @@
           <label style="font-size:13px">その他</label>
         </div>
         <div class="mt-3">
-          @if ($errors->has('birth_day'))
+          @if ($errors->has('ymd'))
           <div class="alert">
-            @foreach($errors->get('birth_day') as $error)
+            @foreach($errors->get('ymd') as $error)
             <li>{{$error}}</li>
             @endforeach
           </div>
           @endif
           <label class="d-block m-0 aa" style="font-size:13px">生年月日</label>
-          <select class="old_year" name="old_year">
+          <select class="old_year" name="old_year" id="year">
             <option value="none">-----</option>
             <option value="1985">1985</option>
             <option value="1986">1986</option>
@@ -133,7 +133,7 @@
             <option value="2010">2010</option>
           </select>
           <label style="font-size:13px">年</label>
-          <select class="old_month" name="old_month">
+          <select class="old_month" name="old_month" id="month">
             <option value="none">-----</option>
             <option value="01">1</option>
             <option value="02">2</option>
@@ -149,7 +149,7 @@
             <option value="12">12</option>
           </select>
           <label style="font-size:13px">月</label>
-          <select class="old_day" name="old_day">
+          <select class="old_day" name="old_day" id="day">
             <option value="none">-----</option>
             <option value="01">1</option>
             <option value="02">2</option>
@@ -184,6 +184,7 @@
             <option value="31">31</option>
           </select>
           <label style="font-size:13px">月</label>
+          <input type="hidden" name="ymd" id="ymd" value="">
         </div>
         <div class="mt-3">
           @if ($errors->has('role'))

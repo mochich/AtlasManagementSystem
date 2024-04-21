@@ -96,6 +96,18 @@ $(function () {
     } else {
       $('.register_btn').prop('disabled', true);
     }
+    // 追加
+    function selectYmd() {
+      let year = document.getElementById('year');
+      let month = document.getElementById('month');
+      let day = document.getElementById('day');
+      let ymd = document.getElementById('ymd');
+      ymd.value = year.value + month.value + day.value;
+    }
+
+
   });
+
+
 
 })

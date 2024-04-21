@@ -33,21 +33,14 @@ class RegisterRequest extends FormRequest
             'mail_address' => 'required|max:100|email|unique:users,mail_address,',
             'password' => 'required|confirmed|max:20|min:8|alpha_num',
             'sex' => 'required|in:1,2,3',
-            'birth_day' => 'date|date_format:Y-m-d|after:2000/1/1|before:today',
+            'ymd' => 'date|after:2000/1/1|before:today',
             'old_year' => 'required',
             'old_month' => 'required',
             'old_day' => 'required',
             'role' => 'required|in:1,2,3,4',
         ];
     }
-    protected function withValidator($validator): void
-    {
-        $validator->after(function ($validator) {
-            if (!checkdate($this->input('old_month'), $this->input('old_day'), $this->input('old_year'))) {
-                $validator->errors()->add('birthday_day', '正しい日付を入力してください');
-            }
-        });
-    }
+
 
     public function attributes()
     {
@@ -58,7 +51,8 @@ class RegisterRequest extends FormRequest
     {
         return [
             'over_name_kana.regex' => 'セイはカタカナで記入してください',
-            'under_name_kana.regex' => 'メイはカタカナで記入してください'
+            'under_name_kana.regex' => 'メイはカタカナで記入してください',
+            'ymd.before' => '生年月日は今日より前の日付を指定してください。'
         ];
     }
 }

@@ -153,7 +153,7 @@ return [
         'under_name_kana' => 'メイ',
         'mail_address' => 'メールアドレス',
         'sex' => '性別',
-        'birth_day' => '生年月日',
+        'ymd' => '生年月日',
         'role' => '権限',
         'password' => 'パスワード',
         'post_title' => 'タイトル',
