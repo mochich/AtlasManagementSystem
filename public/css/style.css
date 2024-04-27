@@ -48,12 +48,33 @@ li {
 }
 
 /* スクール予約関連 */
+
+.calendar-td {
+  /* background-color: #EEE; */
+  min-width: 100px;
+}
+
 .day-blank {
   background: #D3D3D3;
 }
 
+/* .day-mon,
+.day-tue,
+.day-wed,
+.day-thu,
+.day-fri,
+.day-sat,
+.day-sun {
+  background-color: #FFF;
+
+  .border-primary {
+    display: block;
+  }
+} */
+
 .day-sat {
   color: #0000FF;
+
 }
 
 .day-sun {
@@ -64,9 +85,6 @@ li {
   background: #EEE;
 }
 
-.calendar-td {
-  min-width: 100px;
-}
 
 .day_part {
   color: #494949;
