@@ -69,7 +69,7 @@ class CalendarView
 
           // 過去日
           if ($startDay <= $day->everyDay() && $toDay >= $day->everyDay()) {
-            $html[] = '<p class="m-auto p-0 w-75" style="font-size:12px"></p>';
+            $html[] = '<p class="m-auto p-0 w-75" style="font-size:12px">' . $reservePart . '参加</p>';
             $html[] = '<input type="hidden" name="getPart[]" value="" form="reserveParts">';
           }
           // 予約削除ボタン
@@ -82,24 +82,25 @@ class CalendarView
         // 予約してない日の表示
         else {
           if ($startDay <= $day->everyDay() && $toDay >= $day->everyDay()) {
-            $html[] = '<p class="m-auto p-0 w-75" style="font-size:12px">aaa</p>';
+            $html[] = '<p class="m-auto p-0 w-75" style="font-size:12px">受付終了</p>';
+            $html[] = '<input type="hidden" name="getPart[]" value="" form="reserveParts">';
           } else {
 
             $html[] = $day->selectPart($day->everyDay());
           }
-          $html[] = $day->getDate();
-          $html[] = '</td>';
         }
-        $html[] = '</tr>';
+        $html[] = $day->getDate();
+        $html[] = '</td>';
       }
-      $html[] = '</tbody>';
-      $html[] = '</table>';
-      $html[] = '</div>';
-      $html[] = '<form action="/reserve/calendar" method="post" id="reserveParts">' . csrf_field() . '</form>';
-      $html[] = '<form action="/delete/calendar" method="post" id="deleteParts">' . csrf_field() . '</form>';
-
-      return implode('', $html);
+      $html[] = '</tr>';
     }
+    $html[] = '</tbody>';
+    $html[] = '</table>';
+    $html[] = '</div>';
+    $html[] = '<form action="/reserve/calendar" method="post" id="reserveParts">' . csrf_field() . '</form>';
+    $html[] = '<form action="/delete/calendar" method="post" id="deleteParts">' . csrf_field() . '</form>';
+
+    return implode('', $html);
   }
 
   protected function getWeeks()

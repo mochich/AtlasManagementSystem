@@ -24,6 +24,7 @@ class UsersController extends Controller
         $role = $request->role;
         $subjects
             = $request->subject;
+
         // ここで検索時の科目を受け取る
         $userFactory = new SearchResultFactories();
         $users = $userFactory->initializeUsers($keyword, $category, $updown, $gender, $role, $subjects);
