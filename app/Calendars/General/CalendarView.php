@@ -19,6 +19,19 @@ class CalendarView
     return $this->carbon->format('Y年n月');
   }
 
+  // public function prev()
+  // {
+  //   $dt =
+  //     Carbon::today();
+  //   return $dt->subMonth();
+  // }
+  // public function next()
+  // {
+  //   $dt =
+  //     Carbon::today();
+  //   return $dt->addMonth();
+  // }
+
   function render()
   {
     $html = [];
@@ -74,11 +87,16 @@ class CalendarView
           }
           // 予約削除ボタン
           else {
-            $html[] = '<button type="submit" class="btn btn-danger p-0 w-75" name="delete_date" style="font-size:12px" value="' . $day->authReserveDate($day->everyDay())->first()->setting_reserve . '">' . $reservePart . '</button>';
+            $html[] = '<button type="submit" class="btn btn-danger edit-modal-open p-0 w-75" name="delete_date" style="font-size:12px" day="' . $day->authReserveDate($day->everyDay())->first()->setting_reserve . '" part="' . $reservePart . '" >' . $reservePart .
+
+              '</button>';
+
+
+
+
             $html[] = '<input type="hidden" name="getPart[]" value="" form="reserveParts">';
           }
         }
-
         // 予約してない日の表示
         else {
           if ($startDay <= $day->everyDay() && $toDay >= $day->everyDay()) {

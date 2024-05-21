@@ -9,6 +9,8 @@
       <p><span>{{ $post->user->over_name }}</span><span class="ml-3">{{ $post->user->under_name }}</span>さん</p>
       <p><a href="{{ route('post.detail', ['id' => $post->id]) }}">{{ $post->post_title }}</a></p>
       <div class="post_bottom_area d-flex">
+        <div class="category_btn">{{$post->subCategories->get("id")}}</div>
+
         <div class="d-flex post_status">
           <div class="mr-5">
             <i class="fa fa-comment"></i><span class="posts_counts{{ $post->id }}">{{$post_comment->commentCounts($post->id)}}</span>

@@ -25,12 +25,37 @@ class CalendarsController extends Controller
         try {
             $getPart = $request->getPart;
             $getDate = $request->getDate;
+
             $reserveDays = array_filter(array_combine($getDate, $getPart));
             foreach ($reserveDays as $key => $value) {
                 $reserve_settings = ReserveSettings::where('setting_reserve', $key)->where('setting_part', $value)->first();
                 $reserve_settings->decrement('limit_users');
                 $reserve_settings->users()->attach(Auth::id());
             }
+            DB::commit();
+        } catch (\Exception $e) {
+            DB::rollback();
+        }
+        return redirect()->route('calendar.general.show', ['user_id' => Auth::id()]);
+    }
+
+    public function delete(Request $request)
+    {
+        DB::beginTransaction();
+        try {
+            $getDate = $request->day;
+            $getPart
+                = $request->part;
+            if ($getPart == "リモ1部") {
+                $getPart = 1;
+            } else if ($getPart == "リモ2部") {
+                $getPart = 2;
+            } else if ($getPart == "リモ3部") {
+                $getPart = 3;
+            }
+            $delete_settings = ReserveSettings::where('setting_reserve', $getDate)->where('setting_part', $getPart)->first();
+            $delete_settings->increment('limit_users');
+            $delete_settings->users()->detach(Auth::id());
             DB::commit();
         } catch (\Exception $e) {
             DB::rollback();
