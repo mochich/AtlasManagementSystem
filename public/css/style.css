@@ -133,6 +133,10 @@ li {
   width: 60%;
 }
 
+.flex {
+  display: flex;
+}
+
 /* 掲示板 */
 .sub_categories {
   display: none;
@@ -316,3 +320,5 @@ li {
   line-height: 1.5rem;
   margin: 0 auto;
 }
+
+/* カレンダー */
