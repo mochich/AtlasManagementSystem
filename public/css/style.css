@@ -142,6 +142,10 @@ li {
   display: none;
 }
 
+.post_create_container optgroup {
+  background-color: #EBEBEB;
+}
+
 .post_create_area {
   background: #FFF;
   border-radius: 10px;

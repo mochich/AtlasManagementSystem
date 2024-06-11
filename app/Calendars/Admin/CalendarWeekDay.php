@@ -53,15 +53,14 @@ class CalendarWeekDay
 
     $html[] = '<div class="text-right">';
     if ($one_part) {
-      $html[] = '<p class="day_part m-0 pt-1">' . DB::table('reserve_setting_users')->where('reserve_setting_id', '$one_part')->count() . '</p>';
+      $html[] = '<p class="day_part m-0 pt-1">' . DB::table('reserve_setting_users')->where('reserve_setting_id', $one_part->id)->count() . '</p>';
     }
-    //$one_partを４(reserve_setting_id=4は２人の参加者がいる)としたときし、表示は２になった。けれど＄one_partだと０のまま。＄
 
     if ($two_part) {
-      $html[] = '<p class="day_part m-0 pt-1">' . DB::table('reserve_setting_users')->where('reserve_setting_id', $two_part)->count() . '</p>';
+      $html[] = '<p class="day_part m-0 pt-1">' . DB::table('reserve_setting_users')->where('reserve_setting_id', $two_part->id)->count() . '</p>';
     }
     if ($three_part) {
-      $html[] = '<p class="day_part m-0 pt-1">' . DB::table('reserve_setting_users')->where('reserve_setting_id', $three_part)->count() . '</p>';
+      $html[] = '<p class="day_part m-0 pt-1">' . DB::table('reserve_setting_users')->where('reserve_setting_id', $three_part->id)->count() . '</p>';
     }
     $html[] = '</div>';
     $html[] = '</div>';
