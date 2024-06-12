@@ -18,17 +18,46 @@ li {
   list-style: none;
 }
 
+a {
+  text-decoration: none;
+}
+
+a:link {
+  color: #212529;
+}
+
+a:visited {
+  color: #212529;
+}
+
 /* サイドバー */
 .sidebar {
-  width: 150px;
+  width: 200px;
   height: 100vh;
   background-color: #03AAD2;
   font-weight: bold;
+  padding-top: 20px;
 }
 
+.sidebar span {
+  margin-left: 6px;
+}
+
+.sidebar p {
+  margin-left: 6px;
+}
+
+
 /* ログインページ */
-.border {
+
+.border.vh-50.w-50 {
   background-color: #fff;
+  width: 50vw;
+  height: 50vh;
+  display: flex;
+  flex-flow: column;
+  justify-content: space-between;
+
 }
 
 
@@ -45,6 +74,7 @@ li {
 .user_status {
   border-radius: 10px;
   background: #FFF;
+  box-shadow: 0px 5px 15px 0px rgba(0, 0, 0, 0.35);
 }
 
 /* スクール予約関連 */
@@ -138,6 +168,11 @@ li {
 }
 
 /* 掲示板 */
+.post_title {
+  color: #494949;
+  font-weight: bold;
+}
+
 .sub_categories {
   display: none;
 }
@@ -170,6 +205,14 @@ li {
   justify-content: space-between;
 }
 
+.post_status i {
+  color: #999;
+}
+
+.post_status span {
+  margin-left: 8px;
+}
+
 .like_btn,
 .un_like_btn {
   cursor: pointer;
@@ -192,11 +235,11 @@ li {
   font-weight: bold;
 }
 
-.detsail_post_title {
+.detail_post_title {
   font-size: 14px;
 }
 
-.detsail_post {
+.detail_post {
   font-size: 12px;
   color: #9E9E9E;
 }
@@ -244,6 +287,54 @@ li {
 }
 
 /* 掲示板　カテゴリー */
+.menu li {
+  display: block;
+  border-radius: 8px;
+  margin-top: 24px;
+  height: 48px;
+}
+
+.search_box {
+  display: flex;
+}
+
+.search_box .text {
+  width: 68%;
+  border: 0;
+  border-radius: 8px 0 0 8px;
+  height: 100%;
+  margin: 0;
+
+}
+
+.search_box input::placeholder {
+  background: #9E9E9E;
+}
+
+.search_box .submit {
+  cursor: pointer;
+  border-radius: 0 8px 8px 0;
+  border: none;
+  background-color: #03AAD2;
+  color: #fff;
+  width: 30%;
+  height: 100%;
+  margin: 0;
+}
+
+.menu_button {
+  margin: 0;
+  height: 100%;
+  width: 49%;
+  font-size: 12px;
+  border-radius: 8px;
+  padding: 5px;
+  border: none;
+  background: #04A9D2;
+  color: #FFF;
+  text-align: center;
+}
+
 .category_area {
   background: #FFF;
   border-radius: 10px;
@@ -257,13 +348,29 @@ li {
   color: #FFF;
 }
 
+.button {
+  display: block;
+  width: 100%;
+  height: 100%;
+  border-style: solid;
+  color: #fff;
+  background: #04A9D2;
+  border: none;
+  text-decoration: none;
+  border-radius: 8px;
+  padding: 5px;
+
+}
+
+
 .category_btn {
   font-size: 12px;
-  border-radius: 5px;
-  padding: 0 5px;
+  border-radius: 8px;
+  padding: 5px;
   border: none;
-  background: #999;
+  background: #04A9D2;
   color: #FFF;
+  text-align: center;
 }
 
 .main_categories span,
