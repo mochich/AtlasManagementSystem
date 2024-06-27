@@ -33,12 +33,12 @@
   <div class="other_area border w-25">
     <ul class="menu">
       <li>
-      <input type="button" onclick="{{ route('post.input') }}" value="投稿" class="button">
+      <!-- <input type="button" onclick="{{route('post.input') }}" value="投稿" class="button"> -->
+       <a href="{{route('post.input') }}" class="button">投稿</a>
       </li>
       <li class="search_box">
 
-        <input type="text" class="text" placeholder="キーワードを検索" name="keyword" form="postSearchRequest">
-        <input type="submit" value="検索" form="postSearchRequest" class="submit">
+        <input type="text" class="text" placeholder="キーワードを検索" name="keyword" form="postSearchRequest"><input type="submit" value="検索" form="postSearchRequest" class="submit">
 
       </li>
      <li>
@@ -46,9 +46,12 @@
       <input type="submit" name="my_posts" class="menu_button  " value="自分の投稿" form="postSearchRequest">
       </li>
       </ul>
+      <p>カテゴリー検索</p>
       <ul>
         @foreach($categories as $category)
-        <li class="main_categories" category_id="{{ $category->id }}"><span>{{ $category->main_category }}<span>
+        <li class="main_categories" category_id="{{ $category->id }}">
+          <p class="accordion-title js-accordion-title">{{ $category->main_category }}</p>
+          <div class="accordion-content">
               @foreach($sub_categories as $sub_category)
               <ul>
                 @if($sub_category->main_category_id==$category->id)
@@ -56,9 +59,11 @@
                 @endif
               </ul>
               @endforeach
+              </div>
         </li>
         @endforeach
       </ul>
+
   </div>
   <form action="{{ route('post.show') }}" method="get" id="postSearchRequest"></form>
 </div>

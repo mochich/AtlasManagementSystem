@@ -44,8 +44,8 @@ class CalendarView
     $html[] = '<th>水</th>';
     $html[] = '<th>木</th>';
     $html[] = '<th>金</th>';
-    $html[] = '<th>土</th>';
-    $html[] = '<th>日</th>';
+    $html[] = '<th class="day-sat">土</th>';
+    $html[] = '<th class="day-sun">日</th>';
     $html[] = '</tr>';
     $html[] = '</thead>';
     $html[] = '<tbody>';
@@ -59,7 +59,7 @@ class CalendarView
         $toDay = $this->carbon->copy()->format("Y-m-d");
         // 過去日
         if ($startDay <= $day->everyDay() && $toDay >= $day->everyDay()) {
-          $html[] = '<td class="calendar-td ' . $day->pastClassName() . '">';
+          $html[] = '<td class="calendar-td ' . $day->pastClassName() .' ' . $day->getClassName() .'">';
         }
         // 今日以降
         else {
@@ -82,7 +82,7 @@ class CalendarView
 
           // 過去日
           if ($startDay <= $day->everyDay() && $toDay >= $day->everyDay()) {
-            $html[] = '<p class="m-auto p-0 w-75" style="font-size:12px">' . $reservePart . '参加</p>';
+            $html[] = '<p class="m-auto p-0 w-75" style="font-size:12px; color:#000;">' . $reservePart . '参加</p>';
             $html[] = '<input type="hidden" name="getPart[]" value="" form="reserveParts">';
           }
           // 予約削除ボタン
@@ -100,7 +100,7 @@ class CalendarView
         // 予約してない日の表示
         else {
           if ($startDay <= $day->everyDay() && $toDay >= $day->everyDay()) {
-            $html[] = '<p class="m-auto p-0 w-75" style="font-size:12px">受付終了</p>';
+            $html[] = '<p class="m-auto p-0 w-75" style="font-size:12px; color:#000;">受付終了</p>';
             $html[] = '<input type="hidden" name="getPart[]" value="" form="reserveParts">';
           } else {
 

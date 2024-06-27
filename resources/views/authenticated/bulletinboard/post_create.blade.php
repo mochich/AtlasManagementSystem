@@ -42,14 +42,14 @@
     <div class="category_area mt-5 p-5">
       <form action="{{ route('main.category.create') }}" method="post" id="mainCategoryRequest">{{ csrf_field() }}
         <div class="">
-          <p class="m-0">メインカテゴリー</p>
-          @if($errors->has('main_category_name'))
-          <div class="alert">
+           @if($errors->has('main_category_name'))
+          <span class="error_message">
             @foreach($errors->get('main_category_name') as $error)
             <li>{{$error}}</li>
             @endforeach
-          </div>
+          </span>
           @endif
+          <p class="m-0">メインカテゴリー</p>
           <input type="text" class="w-100" name="main_category_name" form="mainCategoryRequest">
           <input type="submit" value="追加" class="w-100 btn btn-primary p-0" form="mainCategoryRequest">
         </div>
@@ -60,22 +60,21 @@
     <div class="category_area mt-5 p-5">
       <div class="">
         <form action="{{ route('sub.category.create') }}" method="post" id="subCategoryRequest">{{ csrf_field() }}
-          <p class="m-0">サブカテゴリー</p>
           @if($errors->has('main_category'))
-          <div class="alert">
+          <span class="error_message">
             @foreach($errors->get('main_category') as $error)
             <li>{{$error}}</li>
             @endforeach
-          </div>
-          @endif
-
-          @if($errors->has('sub_category_name'))
-          <div class="alert">
+            </span>
+            @endif
+             @if($errors->has('sub_category_name'))
+             <span class="error_message">
             @foreach($errors->get('sub_category_name') as $error)
             <li>{{$error}}</li>
             @endforeach
-          </div>
+          </span>
           @endif
+          <p class="m-0">サブカテゴリー</p>
 
           <select class="w-100" form="subCategoryRequest" name="main_category">
             <option value="">選択してください</option>

@@ -18,10 +18,10 @@
 
   <form action="{{ route('registerPost') }}" method="POST">
     <div class="w-100 d-flex" style="align-items:center; justify-content:center; margin: 20px 0 ;">
-      <div class="w-25 vh-75 border p-3" style="box-shadow: 0px 0px 10px rgb(0 0 0 / 20%); border-radius :10px;">
+      <div class="w-25 vh-75 border p-3" style="background:#fff; box-shadow: 0px 0px 10px rgb(0 0 0 / 20%); border-radius :10px;">
         <div class="register_form">
           <!-- @if ($errors->has('mail_address')) -->
-          <div class="alert">
+          <span class="error_message">
             @foreach($errors->get('over_name') as $error)
             <li>{{$error}}</li>
             @endforeach
@@ -34,7 +34,7 @@
             @foreach($errors->get('under_name_kana') as $error)
             <li>{{$error}}</li>
             @endforeach
-          </div>
+          </span>
           <!-- @endif -->
           <div class="d-flex mt-3" style="justify-content:space-between">
             <div class="" style="width:140px">
@@ -66,12 +66,12 @@
           </div>
           <div class="mt-3">
             @if ($errors->has('mail_address'))
-            <div class="alert">
+            <span class="error_message">
 
               @foreach($errors->get('mail_address') as $error)
               {{ $error }}<br>
               @endforeach
-            </div>
+            </span>
             @endif
             <label class="m-0 d-block" style="font-size:13px">メールアドレス</label>
             <div class="border-bottom border-primary">
@@ -81,11 +81,11 @@
         </div>
         <div class="mt-3">
           @if ($errors->has('sex'))
-          <div class="alert">
+          <span class="error_message">
             @foreach($errors->get('sex') as $error)
             <li>{{$error}}</li>
             @endforeach
-          </div>
+          </span>
           @endif
           <input type="radio" name="sex" class="sex" value="1">
           <label style="font-size:13px">男性</label>
@@ -96,11 +96,11 @@
         </div>
         <div class="mt-3">
           @if ($errors->has('ymd'))
-          <div class="alert">
+          <span class="error_message">
             @foreach($errors->get('ymd') as $error)
             <li>{{$error}}</li>
             @endforeach
-          </div>
+          </span>
           @endif
           <label class="d-block m-0 aa" style="font-size:13px">生年月日</label>
           <select class="old_year" name="old_year" id="year" onchange="selectYmd()">
@@ -188,11 +188,11 @@
         </div>
         <div class="mt-3">
           @if ($errors->has('role'))
-          <div class="alert">
+          <span class="error_message">
             @foreach($errors->get('role') as $error)
             <li>{{$error}}</li>
             @endforeach
-          </div>
+          </span>
           @endif
           <label class="d-block m-0" style="font-size:13px">役職</label>
           <input type="radio" name="role" class="admin_role role" value="1">
@@ -215,11 +215,11 @@
         </div>
         <div class="mt-3">
           @if ($errors->has('password'))
-          <div class="alert">
+          <span class="error_message">
             @foreach($errors->get('password') as $error)
             <li>{{$error}}</li>
             @endforeach
-          </div>
+          </span>
           @endif
           <label class="d-block m-0" style="font-size:13px">パスワード</label>
           <div class="border-bottom border-primary">

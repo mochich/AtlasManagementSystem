@@ -4,13 +4,31 @@
   <div class="w-50 mt-5">
     <div class="m-3 detail_container">
       <div class="p-3">
+          @if($errors->has('post_title'))
+          <span class="error_message">
+            @foreach($errors->get('post_title') as $error)
+            <li>{{$error}}</li>
+            @endforeach
+             </span>
+          @endif
+            @if($errors->has('post_body'))
+             <span class="error_message">
+            @foreach($errors->get('post_body') as $error)
+            <li>{{$error}}</li>
+            @endforeach
+          </span>
+          @endif
         <div class="detail_inner_head">
           <div>
+ @foreach($post->subCategories as $subCategory)
+
+        <div class="category_btn">{{$subCategory->sub_category}}</div>
+@endforeach
           </div>
           @if($post->user==Auth::user())
           <div>
-            <span class="edit-modal-open" post_title="{{ $post->post_title }}" post_body="{{ $post->post }}" post_id="{{ $post->id }}">編集</span>
-            <a href="{{ route('post.delete', ['id' => $post->id]) }}" onclick="return confirm('削除してよろしいでしょうか？')">削除</a>
+            <span class="edit-modal-open btn btn-primary" post_title="{{ $post->post_title }}" post_body="{{ $post->post }}" post_id="{{ $post->id }}">編集</span>
+            <a href="{{ route('post.delete', ['id' => $post->id]) }}" onclick="return confirm('削除してよろしいでしょうか？')" class="btn btn-danger d-inline-block">削除</a>
           </div>
           @endif
         </div>
@@ -45,6 +63,13 @@
   <div class="w-50 p-3">
     <div class="comment_container border m-5">
       <div class="comment_area p-3">
+         @if($errors->has('comment'))
+          <span class="error_message">
+            @foreach($errors->get('comment') as $error)
+            <li>{{$error}}</li>
+            @endforeach
+          </span>
+          @endif
         <p class="m-0">コメントする</p>
         <textarea class="w-100" name="comment" form="commentRequest"></textarea>
         <input type="hidden" name="post_id" form="commentRequest" value="{{ $post->id }}">
