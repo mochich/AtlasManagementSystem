@@ -23,8 +23,10 @@ class CalendarsController extends Controller
     public function reserveDetail($date, $part)
     {
         $reservePersons = ReserveSettings::with('users')->where('setting_reserve', $date)->where('setting_part', $part)->get();
-
-        return view('authenticated.calendar.admin.reserve_detail', compact('reservePersons', 'date', 'part'));
+        $year=substr( $date, 0 , 4);
+        $month=substr( $date, 5 , 2);
+        $day=substr( $date, 8, 2);
+        return view('authenticated.calendar.admin.reserve_detail', compact('reservePersons', 'date', 'part','year','month','day'));
     }
 
     public function reserveSettings()

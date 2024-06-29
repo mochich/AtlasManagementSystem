@@ -8,10 +8,15 @@
 
 /* body */
 
-.all_content {
-  background: #ECF1F6;
-
+body{
+  height: 100%;
 }
+
+.all_content {
+  height: 100vh;
+  background: #ECF1F6;
+}
+
 
 .span {
   font-size: small;
@@ -31,7 +36,6 @@ a {
 /* サイドバー */
 .sidebar {
   width: 200px;
-  height: 100vh;
   background-color: #03AAD2;
   font-weight: bold;
   padding-top: 20px;
@@ -61,6 +65,7 @@ a {
 
 .main-container {
   width: 100%;
+  height: 100%;
 }
 
 .sidebar p a {
@@ -76,10 +81,6 @@ a {
 
 /* スクール予約関連 */
 
-.calendar-td {
-  /* background-color: #EEE; */
-  min-width: 100px;
-}
 
 .day-blank {
   background: #D3D3D3;
@@ -293,6 +294,7 @@ a {
 }
 
 /* 掲示板　カテゴリー */
+
 .other_area {
   width: 200px;
   height: 100vh;
@@ -357,7 +359,12 @@ a {
 .category_area {
   background: #FFF;
   border-radius: 10px;
+
+    p,
+    input,
+    select{margin-bottom: 10px;}
 }
+
 
 .category_box {
   border-radius: 5px;
@@ -493,16 +500,29 @@ a {
 }
 
 
-
-.search_conditions span {
-  cursor: pointer;
-  margin: 20px 0;
+.accordion-title {
+  position: relative;
+  border-bottom: solid 1px #999;
+  display: block;
 }
 
-.search_conditions_inner {
-  display: none;
-  background: #ECF1F6;
-  flex-direction: column;
+.accordion-title::after {
+  border-right: solid 2px #494949;
+  border-top: solid 2px #494949;
+  content: "";
+  display: block;
+  height: 8px;
+  position: absolute;
+  right: 25px;
+  top: 38%;
+  transform: rotate(135deg);
+  transition: transform .3s ease-in-out, top .3s ease-in-out;
+  width: 8px;
+}
+
+.accordion-title.open::after {
+  top: 45%;
+  transform: rotate(-45deg);
 }
 
 .form_group div {
@@ -513,6 +533,16 @@ a {
   margin: 0 10px;
 }
 
+.search_conditions span {
+  cursor: pointer;
+  margin: 20px 0;
+}
+
+.form_group .search_conditions_inner {
+  display: none;
+  background: #ECF1F6;
+  flex-direction: column;
+}
 
 .buttons {
   display: flex;
@@ -612,7 +642,11 @@ a {
 }
 
 .text-right input {
-  margin-top: 10px;
+  margin: 30px 0;
+}
+
+.w-100.h-100.d-flex {
+  margin: 50px 0 120px 0;
 }
 
 .calendar table {
@@ -630,7 +664,9 @@ a {
 }
 
 .reserve_detail {
-  margin: 5px;
+  padding: 5px;
+  width: 100%;
+  border: solid 3px #fff;
 }
 
 .reserve_detail tr:nth-child(odd) {

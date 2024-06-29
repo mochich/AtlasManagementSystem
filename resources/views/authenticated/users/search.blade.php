@@ -1,8 +1,9 @@
 @extends('layouts.sidebar')
 
 @section('content')
+<div class="vh-100 border">
 <p>ユーザー検索</p>
-<div class="search_content w-100 border d-flex">
+<div class="search_content w-100  border d-flex">
   <div class="reserve_users_area">
     @foreach($users as $user)
     <div class="border one_person">
@@ -77,7 +78,7 @@
         </label>
 
 
-        <p class="m-0 search_conditions"><span class="small accordion-title open js-accordion-title">検索条件の追加</span></p>
+        <p class="m-0 search_conditions"><span class="small accordion-title js-accordion-title">検索条件の追加</span></p>
       <div class="search_conditions_inner">
         <div class="form_group">
             <label class="selected_engineer"><span class="small">性別</span>
@@ -109,15 +110,17 @@
             </label>
 
         </div>
+        </div>
         <div class="buttons">
           <input type="submit" name="search_btn" value="検索" form="userSearchRequest" >
           <input type="reset" value="リセット" form="userSearchRequest" class="reset">
 
           <form action="{{ route('user.show') }}" method="get" id="userSearchRequest"></form>
         </div>
-    </div>
+
     </div>
   </div>
+</div>
 </div>
 </div>
 @endsection

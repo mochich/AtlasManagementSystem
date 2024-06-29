@@ -36,16 +36,16 @@ class CalendarView
   {
     $html = [];
     $html[] = '<div class="calendar text-center">';
-    $html[] = '<table class="table">';
+    $html[] = '<table class="table m-auto border">';
     $html[] = '<thead>';
     $html[] = '<tr>';
-    $html[] = '<th>月</th>';
-    $html[] = '<th>火</th>';
-    $html[] = '<th>水</th>';
-    $html[] = '<th>木</th>';
-    $html[] = '<th>金</th>';
-    $html[] = '<th class="day-sat">土</th>';
-    $html[] = '<th class="day-sun">日</th>';
+    $html[] = '<th class="border">月</th>';
+    $html[] = '<th class="border">火</th>';
+    $html[] = '<th class="border">水</th>';
+    $html[] = '<th class="border">木</th>';
+    $html[] = '<th class="border">金</th>';
+    $html[] = '<th class="border day-sat">土</th>';
+    $html[] = '<th class="border day-sun">日</th>';
     $html[] = '</tr>';
     $html[] = '</thead>';
     $html[] = '<tbody>';
@@ -59,11 +59,11 @@ class CalendarView
         $toDay = $this->carbon->copy()->format("Y-m-d");
         // 過去日
         if ($startDay <= $day->everyDay() && $toDay >= $day->everyDay()) {
-          $html[] = '<td class="calendar-td ' . $day->pastClassName() .' ' . $day->getClassName() .'">';
+          $html[] = '<td class=" border calendar-td ' . $day->pastClassName() .' ' . $day->getClassName() .'">';
         }
         // 今日以降
         else {
-          $html[] = '<td class="calendar-td ' . $day->getClassName() . '">';
+          $html[] = '<td class="border calendar-td ' . $day->getClassName() . '">';
         }
         $html[] = $day->render();
 

@@ -42,7 +42,7 @@
     <div class="category_area mt-5 p-5">
       <form action="{{ route('main.category.create') }}" method="post" id="mainCategoryRequest">{{ csrf_field() }}
         <div class="">
-           @if($errors->has('main_category_name'))
+          @if($errors->has('main_category_name'))
           <span class="error_message">
             @foreach($errors->get('main_category_name') as $error)
             <li>{{$error}}</li>
@@ -54,10 +54,8 @@
           <input type="submit" value="追加" class="w-100 btn btn-primary p-0" form="mainCategoryRequest">
         </div>
       </form>
-    </div>
 
     <!-- サブカテゴリー追加 -->
-    <div class="category_area mt-5 p-5">
       <div class="">
         <form action="{{ route('sub.category.create') }}" method="post" id="subCategoryRequest">{{ csrf_field() }}
           @if($errors->has('main_category'))
