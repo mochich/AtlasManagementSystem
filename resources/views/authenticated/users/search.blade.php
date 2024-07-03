@@ -1,10 +1,11 @@
 @extends('layouts.sidebar')
 
 @section('content')
-<div class="vh-100 border">
+<div class="vh-100 board_area w-100 border m-auto d-flex">
+
 <!-- <p>ユーザー検索</p> -->
 <div class="search_content w-100  border d-flex">
-  <div class="reserve_users_area">
+  <div class="reserve_users_area w-75">
     @foreach($users as $user)
     <div class="border one_person">
       <div>
